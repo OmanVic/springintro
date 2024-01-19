@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>View Page</h1>
+<h1><span th:text="${staff.name}"></span><span> Information Header</span></h1>
+
+<span><a th:href="@{/Staff/List}">List of staff</a></span>
+
+    <div>ID: <span th:text="${staff.id}"></span></div>
+    <div>NAME: <span th:text="${staff.name}"></span></div>
+    <div>AGE: <span th:text="${staff.age}"></span></div>
+</body>
+</html>
