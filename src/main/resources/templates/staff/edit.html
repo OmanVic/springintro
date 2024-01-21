@@ -1,20 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Add the following links to your HTML file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Edit Page</h1>
+<div class="container mt-5">
+    <nav class="ja navbar navbar-expand-lg navbar-light bg-light">
+<!--        <a class="navbar-brand" href="#">Welcome</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/Create}">Create New Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/List}">List Staff</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <form th:action="@{/Staff/Update/{id}(id = ${staff.id})}" method="post">
-        <label >Name</label> <br>
-        <input type="text" name="name" th:value="${staff.name}"/> <br><br>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" th:value="${staff.name}" />
+        </div>
 
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" class="form-control" th:value="${staff.age}" />
+        </div>
 
-        <label >Age</label>> <br>
-        <input type="number" name="age" th:value="${staff.age}"/>
-
-        <input type="submit" value="Save">
+        <input type="submit" class="btn btn-primary" value="Save">
     </form>
+</div>
 </body>
 </html>

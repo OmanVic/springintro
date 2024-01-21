@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome</title>
+    <!-- Add the following links to your HTML file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .ja {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Index Page</h1>
-    <h1 th:text="${info}">Header</h1>
-    <a th:href="@{/Staff/Create}">Create Staff</a>
+<div class="container mt-5">
+    <nav class="ja navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Welcome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/Create}">Create New Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/List}">List Staff</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 th:text="${info}">Header</h2>
+
+    <a th:href="@{/Staff/Create}" class="btn btn-primary">Create Staff</a>
     <br><br>
-    <a th:href="@{/Staff/List}">List Staff</a>
+    <a th:href="@{/Staff/List}" class="btn btn-primary">List Staff</a>
+</div>
 </body>
 </html>

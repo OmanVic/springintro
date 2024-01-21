@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>List Page</title>
+    <!-- Add the following links to your HTML file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .ja {
+            margin-top: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>List Page</h1>
+<div class="container">
+    <nav class="ja navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/Create}">Create New Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Staff/List}">List Staff</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h2>List of staffs</h2>
+    <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+            </thead>
 
-<a th:href="@{/Staff/Create}">Create New Staff</a>
-
-<table border="1">
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Action</th>
-    </tr>
-    <tr th:each="staff: ${staffs}">
-        <td th:text="${staff.id}">1</td>
-        <td th:text="${staff.name}">John</td>
-        <td th:text="${staff.age}">23</td>
-        <td><a th:href="@{/Staff/View(id=${staff.id})}">View</a> <a th:href="@{/Staff/Edit/{id}(id = ${staff.id})}">Edit</a> <a href="">Delete</a></td>
-
-    </tr>
-</table>
-
+            <tr th:each="staff: ${staffs}">
+                <td th:text="${staff.id}">1</td>
+                <td th:text="${staff.name}">John</td>
+                <td th:text="${staff.age}">23</td>
+                <td>
+                    <a th:href="@{/Staff/View(id=${staff.id})}" class="btn btn-info">View</a>
+                    <a th:href="@{/Staff/Edit/{id}(id=${staff.id})}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{/Staff/Delete/{id}(id=${staff.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>

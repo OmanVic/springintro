@@ -18,7 +18,7 @@ public class StaffController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView Home(){
-        String info = "Welcome to Spring Boot";
+        String info = "Welcome to Staff Information Database";
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("staff/index");
         modelAndView.addObject("info", info);
@@ -48,11 +48,11 @@ public class StaffController {
     @RequestMapping(value = "/Register", method = RequestMethod.POST)
     public ModelAndView Register(@RequestParam(value="na") String name, @RequestParam(value = "ag") int age){
         staffService.CreateStaff(name, age);
-        return null;
+        return List();
     }
 
     @RequestMapping(value = "/View", method = RequestMethod.GET)
-    public ModelAndView View(@RequestParam(value = "id") long id){
+    public ModelAndView View(@RequestParam(value = "id") Long id){
 
         Staff staff = staffService.getStaff(id);
 
@@ -63,7 +63,7 @@ public class StaffController {
     }
 
     @RequestMapping(value = "/Edit/{id}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable(value = "id") long id){
+    public ModelAndView edit(@PathVariable(value = "id") Long id){
 
         Staff staff = staffService.getStaff(id);
 
@@ -74,9 +74,18 @@ public class StaffController {
     }
 
     @RequestMapping(value = "/Update/{id}", method = RequestMethod.POST)
-    public ModelAndView update( Staff staff, @PathVariable(value = "id") long id){
+    public ModelAndView update( Staff staff, @PathVariable(value = "id") Long id){
         staff.setId(id);
         staffService.updateStaff(staff);
-        return null;
+        return List();
     }
+
+    @GetMapping(value = "/Delete/{id}")
+    public ModelAndView delete(@PathVariable Long id){
+        staffService.deleteStaff(id);
+        List();
+        System.out.println("this works");
+        return List();
+    }
+
 }

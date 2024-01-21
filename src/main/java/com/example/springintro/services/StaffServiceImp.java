@@ -31,7 +31,7 @@ public class StaffServiceImp implements StaffService {
     }
 
     @Override
-    public Staff getStaff(long id) {
+    public Staff getStaff(Long id) {
         Optional<Staff> optionalStaff = staffRepository.findById(id);
 
         if (optionalStaff.isPresent()) {
@@ -44,5 +44,21 @@ public class StaffServiceImp implements StaffService {
     @Override
     public void updateStaff(Staff staff) {
         staffRepository.save(staff);
+    }
+
+    @Override
+    public void deleteStaff(Long id) {
+
+        staffRepository.deleteById(id);
+
+//        List<Staff> staffList = staffRepository.findAll();
+//
+//        for (int i = 0; i < staffList.size(); i++){
+//            if (staffList.get(i).getId() == id){
+//                staffList.remove(i);
+//            }
+//        }
+
+
     }
 }
